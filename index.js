@@ -7,6 +7,7 @@ app.use(express.json());
 
 app.use("/api/vocabs", vocabs);
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`listening to port ${port}`);
 });
+module.exports = server;
