@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   let vocab = new Vocab({
-    name: req.body.name,
+    word: req.body.word,
   });
   vocab = await vocab.save();
 
@@ -39,7 +39,7 @@ router.put("/:id", validateObjectId, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  vocab.name = req.body.name;
+  vocab.word = req.body.word;
 
   vocab = await vocab.save(); //query first
 

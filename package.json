@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest --watchAll --detectOpenHandles"
   },
   "dependencies": {
     "config": "^3.3.7",

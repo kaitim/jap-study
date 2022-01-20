@@ -5,11 +5,11 @@ const mongoose = require("mongoose");
 describe("vocab API", () => {
   let server;
   let vocab;
-  let name;
+  let word;
   let newVocab;
 
   const exec = () => {
-    return request(server).post("/api/vocabs").send({ name });
+    return request(server).post("/api/vocabs").send({ word });
   };
 
   const execUpdate = () => {
@@ -20,10 +20,10 @@ describe("vocab API", () => {
 
   beforeEach(async () => {
     server = require("../index");
-    name = "heyman";
-    newVocab = { name: "japjap" };
+    word = "heyman";
+    newVocab = { word: "japjap" };
 
-    vocab = new Vocab({ name: "first" });
+    vocab = new Vocab({ word: "first" });
     vocab = await vocab.save();
   });
 
@@ -37,7 +37,7 @@ describe("vocab API", () => {
       const res = await exec();
 
       expect(res.status).toBe(200);
-      expect(res.body).toHaveProperty("name", name);
+      expect(res.body).toHaveProperty("word", word);
     });
 
     it("db should contain vocab if valid input", async () => {
@@ -48,7 +48,7 @@ describe("vocab API", () => {
     });
 
     it("return 400 if invalid input length < 5", async () => {
-      name = "hey";
+      word = "hey";
 
       const res = await exec();
 
@@ -68,7 +68,7 @@ describe("vocab API", () => {
       const res = await request(server).get("/api/vocabs/" + vocab._id);
 
       expect(res.status).toBe(200);
-      expect(res.body).toHaveProperty("name", "first");
+      expect(res.body).toHaveProperty("word", "first");
     });
 
     it("return 400 if invalid object id", async () => {
@@ -91,7 +91,7 @@ describe("vocab API", () => {
       const res = await execUpdate();
 
       expect(res.status).toBe(200);
-      expect(res.body).toHaveProperty("name", newVocab.name);
+      expect(res.body).toHaveProperty("word", newVocab.word);
     });
 
     it("db updated if valid input", async () => {

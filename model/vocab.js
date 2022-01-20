@@ -2,14 +2,20 @@ const Joi = require("Joi");
 const mongoose = require("mongoose");
 
 const vocabSchema = new mongoose.Schema({
-  name: String,
+  word: { type: String, required: true },
+  kanji: String,
+  example: String,
+  meaning: String,
+  type: String,
+  chapter: Number,
+  tag: Array,
 });
 
 const Vocab = mongoose.model("vocab", vocabSchema);
 
 function validateVocab(vocab) {
   const schema = Joi.object({
-    name: Joi.string().min(5).required(),
+    word: Joi.string().min(5).required(),
   });
   return schema.validate(vocab);
 }
