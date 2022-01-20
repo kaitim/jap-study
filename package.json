@@ -1,10 +1,12 @@
 {
   "scripts": {
-    "test": "jest --watchAll --coverage"
+    "test": "jest --watchAll"
   },
   "dependencies": {
+    "config": "^3.3.7",
     "express": "^4.17.2",
-    "joi": "^17.5.0"
+    "joi": "^17.5.0",
+    "mongoose": "^6.1.7"
   },
   "devDependencies": {
     "jest": "^27.4.7",

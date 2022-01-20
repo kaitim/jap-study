@@ -1,4 +1,11 @@
 const Joi = require("Joi");
+const mongoose = require("mongoose");
+
+const vocabSchema = new mongoose.Schema({
+  name: String,
+});
+
+const Vocab = mongoose.model("vocab", vocabSchema);
 
 function validateVocab(vocab) {
   const schema = Joi.object({
@@ -7,4 +14,5 @@ function validateVocab(vocab) {
   return schema.validate(vocab);
 }
 
+exports.Vocab = Vocab;
 exports.validate = validateVocab;
