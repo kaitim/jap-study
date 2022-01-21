@@ -8,7 +8,7 @@ const vocabSchema = new mongoose.Schema({
   meaning: String,
   type: String,
   chapter: Number,
-  tag: Array,
+  tags: Array,
 });
 
 const Vocab = mongoose.model("vocab", vocabSchema);

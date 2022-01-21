@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "test": "jest --watchAll --detectOpenHandles"
+    "start": "nodemon index",
+    "test": "set NODE_ENV=test&&jest --watchAll --detectOpenHandles"
   },
   "dependencies": {
     "config": "^3.3.7",

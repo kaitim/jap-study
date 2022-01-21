@@ -79,7 +79,6 @@ describe("vocab API", () => {
 
     it("return 404 if id not found", async () => {
       const id = new mongoose.Types.ObjectId().toHexString();
-      console.log(id);
       const res = await request(server).get("/api/vocabs/" + id);
 
       expect(res.status).toBe(404);
@@ -161,7 +160,6 @@ describe("vocab API", () => {
       const res = await request(server).delete(
         "/api/vocabs/" + new mongoose.Types.ObjectId()
       );
-      console.log(res.body);
 
       expect(res.status).toBe(200);
       expect(res.body).toMatchObject({});
